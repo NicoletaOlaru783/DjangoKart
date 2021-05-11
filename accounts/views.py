@@ -1,3 +1,4 @@
+from store.views import product_detail
 from store.models import Product
 from carts.views import _cart_id
 from carts.models import Cart, CartItem
@@ -60,14 +61,11 @@ def login(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-
         user = auth.authenticate(email=email, password=password)
 
         if user is not None:
             try:
                 cart = Cart.objects.get(cart_id=_cart_id(request))
-                is_cart_item_exists = CartItem.objects.filter(
-                    cart=cart).exists()
                 is_cart_item_exists = CartItem.objects.filter(
                     cart=cart).exists()
                 if is_cart_item_exists:
