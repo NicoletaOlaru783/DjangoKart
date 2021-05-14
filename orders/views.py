@@ -3,9 +3,9 @@ from django.template.loader import render_to_string
 from orders.models import Order
 from orders.forms import OrderForm
 from carts.models import CartItem
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
-import datetime
+from datetime import datetime
 
 
 def place_order(request, total=0, quantity=0):
@@ -46,12 +46,9 @@ def place_order(request, total=0, quantity=0):
             data.ip = request.META.get('REMOTE_ADDR')
             data.save()
             # generate order number
-            year = int(datetime.date.today().strftime('%Y'))
-            date = int(datetime.date.today().strftime('%d'))
-            month = int(datetime.date.today().strftime('%m'))
-            d = datetime.date(year, date, month)
-            current_date = d.strftime("%Y%m%d")
-            order_number = current_date + str(data.id)
+            now = datetime.now()  # current date and time
+            date_time = now.strftime("%m%d%Y")
+            order_number = date_time + str(data.id)
             data.order_number = order_number
             data.save()
             # send email confirmation
@@ -63,10 +60,34 @@ def place_order(request, total=0, quantity=0):
             to_email = request.user.email
             send_email = EmailMessage(mail_subject, message, to=[to_email])
             send_email.send()
-            # empty the cart after
-            CartItem.objects.filter(user=request.user).delete()
+            # send info to the next page for receipt
+            request.session['order_number'] = data.order_number
 
-            return redirect('dashboard')
-
+            return redirect('order_completed')
     else:
         return redirect('checkout')
+
+
+def order_completed(request):
+    order_number = request.session['order_number']
+    cart_items = CartItem.objects.filter(user=request.user)
+    try:
+        order = Order.objects.get(order_number=order_number)
+        subtotal = 0
+        for i in cart_items:
+            subtotal += i.product.price * i.quantity
+
+        context = {
+            'order': order,
+            'order_number': order.order_number,
+            'order_total': order.order_total,
+            'cart_items': cart_items,
+            'subtotal': subtotal,
+        }
+
+        return render(request, 'orders/order_completed.html', context)
+    except (Order.DoesNotExist):
+        return render(request, 'home')
+    finally:
+        # empty the cart after
+        CartItem.objects.filter(user=request.user).delete()
