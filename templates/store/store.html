@@ -24,7 +24,7 @@
                                 <h6 class="title">Categories</h6>
                             </a>
                         </header>
-                        <div class="filter-content collapse show" id="collapse_1" style="">
+                        <div class="filter-content collapse show" id="collapse_1">
                             <div class="card-body">
                                 <ul class="list-menu">
                                     <li><a href="{%url 'store' %}"> All products </a></li>
@@ -40,39 +40,7 @@
                         </div>
                     </article>
                     <!-- filter-group  .// -->
-                    <article class="filter-group">
-                        <header class="card-header">
-                            <a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">
-                                <i class="icon-control fa fa-chevron-down"></i>
-                                <h6 class="title">Sizes</h6>
-                            </a>
-                        </header>
-                        <div class="filter-content collapse show" id="collapse_4" style="">
-                            <div class="card-body">
-                                <label class="checkbox-btn">
-                                    <input type="checkbox" />
-                                    <span class="btn btn-light"> XS </span>
-                                </label>
 
-                                <label class="checkbox-btn">
-                                    <input type="checkbox" />
-                                    <span class="btn btn-light"> SM </span>
-                                </label>
-
-                                <label class="checkbox-btn">
-                                    <input type="checkbox" />
-                                    <span class="btn btn-light"> LG </span>
-                                </label>
-
-                                <label class="checkbox-btn">
-                                    <input type="checkbox" />
-                                    <span class="btn btn-light"> XXL </span>
-                                </label>
-                            </div>
-                            <!-- card-body.// -->
-                        </div>
-                    </article>
-                    <!-- filter-group .// -->
 
                     <article class="filter-group">
                         <header class="card-header">
@@ -81,37 +49,37 @@
                                 <h6 class="title">Price range</h6>
                             </a>
                         </header>
-                        <div class="filter-content collapse show" id="collapse_3" style="">
+                        <div class="filter-content collapse show" id="collapse_3">
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Min</label>
                                         <!-- <input class="form-control" placeholder="$0" type="number"> -->
                                         <select class="mr-2 form-control">
-                                            <option value="0">$0</option>
-                                            <option value="50">$50</option>
-                                            <option value="100">$100</option>
-                                            <option value="150">$150</option>
-                                            <option value="200">$200</option>
-                                            <option value="500">$500</option>
-                                            <option value="1000">$1000</option>
+                                            <option value="0">0 kr.</option>
+                                            <option value="50">50 kr.</option>
+                                            <option value="100">100 kr.</option>
+                                            <option value="150">150 kr.</option>
+                                            <option value="200">200 kr.</option>
+                                            <option value="500">500 kr.</option>
+                                            <option value="1000">1000 kr.</option>
                                         </select>
                                     </div>
                                     <div class="form-group text-right col-md-6">
                                         <label>Max</label>
                                         <select class="mr-2 form-control">
-                                            <option value="50">$50</option>
-                                            <option value="100">$100</option>
-                                            <option value="150">$150</option>
-                                            <option value="200">$200</option>
-                                            <option value="500">$500</option>
-                                            <option value="1000">$1000</option>
-                                            <option value="2000">$2000+</option>
+                                            <option value="50">50 kr.</option>
+                                            <option value="100">100 kr.</option>
+                                            <option value="150">150 kr.</option>
+                                            <option value="200">200 kr.</option>
+                                            <option value="500">500 kr.</option>
+                                            <option value="1000">1000 kr.</option>
+                                            <option value="2000">2000 kr.</option>
                                         </select>
                                     </div>
                                 </div>
                                 <!-- form-row.// -->
-                                <button class="btn btn-block btn-primary">Apply</button>
+                                <button class="btn btn-block btnBlue">Apply</button>
                             </div>
                             <!-- card-body.// -->
                         </div>
@@ -145,11 +113,11 @@
                                 <div class="fix-height">
                                     <a href="{{ product.get_url }}" class="title">{{product.product_name}}</a>
                                     <div class="price-wrap mt-2">
-                                        <span class="price">${{product.price}}</span>
+                                        <span class="price">{{product.price}} kr.</span>
                                     </div>
                                     <!-- price-wrap.// -->
                                 </div>
-                                <a href="{{ product.get_url }}" class="btn btn-block btn-primary">View details
+                                <a href="{{ product.get_url }}" class="btn btn-block btnPink">View details
                                 </a>
                             </figcaption>
                         </figure>

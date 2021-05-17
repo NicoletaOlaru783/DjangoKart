@@ -1,7 +1,7 @@
 {% load static %}
 
 <header class="section-header">
-    <nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+    <nav class="navbar p-md-0 navbar-expand-sm  border-bottom">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,16 +10,16 @@
             <div class="collapse navbar-collapse" id="navbarTop4">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link"> English </a>
+                        <a href="#" class="nav-link navbarColors"> English </a>
 
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link"> USD </a>
+                        <a href="#" class="nav-link navbarColors"> USD </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li><a href="#" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
-                    <li><a href="#" class="nav-link"> <i class="fa fa-phone"></i> Call us </a></li>
+                    <li><a href="#" class="nav-link navbarColors"> <i class="fa fa-envelope"></i> Email </a></li>
+                    <li><a href="#" class="nav-link navbarColors"> <i class="fa fa-phone"></i> Call us </a></li>
                 </ul> <!-- list-inline //  -->
             </div> <!-- navbar-collapse .// -->
         </div> <!-- container //  -->
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-lg col-sm col-md col-6 flex-grow-0">
                     <div class="category-wrap dropdown d-inline-block float-right">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <button id="btnCategories" type="button" class="btn dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bars"></i> All category
                         </button>
                         <div class="dropdown-menu">
@@ -46,7 +46,7 @@
                         </div>
                     </div> <!-- category-wrap.// -->
                 </div> <!-- col.// -->
-                <a href="{% url 'store' %}" class="btn btn-outline-primary">Store</a>
+                <a href="{% url 'store' %}" class="btn btnOutline">Store</a>
                 <div class="col-lg  col-md-6 col-sm-12 col">
                     <form action="{% url 'search' %}" class="search" method="GET">
                         <div class="input-group w-100">
@@ -54,7 +54,7 @@
                                 name='keyword'>
 
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn btnSearch" type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
